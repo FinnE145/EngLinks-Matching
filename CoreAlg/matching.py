@@ -12,8 +12,9 @@ def best_tutor(student_data: dict, tutors: dict) -> str | None:
         The ID of the best tutor, or ``None`` if no suitable tutor is found.
     """
     pass
+    # Note: this function should use the ranking criteria to return the best tutor's ID (as a number)
 
-def match(student_data: dict, tutors: dict) -> str | None:
+def match(student_data: dict, tutors: dict) -> int | None:
     """
     Match a student to the best available tutor based on their courses, availability, and additional criteria in the event of a tie. Updates the tutor's student count if a match is found.
 
@@ -24,3 +25,4 @@ def match(student_data: dict, tutors: dict) -> str | None:
         The ID of the matched tutor, or ``None`` if no suitable tutor is found.
     """
     pass
+    # Note: this function should filter the tutors, and if there is a tie, call `best_tutor` to break the tie. Then it should return the ID of the best tutor (as a number)
