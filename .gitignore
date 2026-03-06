@@ -211,4 +211,5 @@ __marimo__/
 
 # Custom
 *.shelve
+/Data/
 # Note: run `git update-index --skip-worktree Data/tutor_data.xlsx` to avoid committing changes to the test excel file
