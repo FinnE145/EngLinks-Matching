@@ -3,5 +3,29 @@
 {% block page_title %}New Student{% endblock %}
 
 {% block content %}
-Coming soon!
+<form method="post" action="{{ url_for('submit_student') }}">
+    <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" name="name" required>
+    </div>
+    <div class="mb-3">
+        <label for="courses" class="form-label">Courses (ex. '101, 132, 174')</label>
+        <input type="text" class="form-control" id="courses" name="courses" required
+            pattern="^\s*(?:[Aa][Pp][Ss][Cc])?\s*\d{3}(?:\s*,\s*(?:[Aa][Pp][Ss][Cc])?\s*\d{3})*\s*$"
+            title="Enter a comma-separated list of 3-digit course numbers.">
+    </div>
+    <div class="mb-3">
+        <label for="availability" class="form-label">Availability (ctrl+click to select multiple)</label>
+        <select class="form-select" id="availability" name="availability" multiple required>
+            <option value="Monday">Monday</option>
+            <option value="Tuesday">Tuesday</option>
+            <option value="Wednesday">Wednesday</option>
+            <option value="Thursday">Thursday</option>
+            <option value="Friday">Friday</option>
+            <option value="Saturday">Saturday</option>
+            <option value="Sunday">Sunday</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-purple">Submit</button>
+</form>
 {% endblock %}
