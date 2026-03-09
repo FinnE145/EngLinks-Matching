@@ -48,6 +48,7 @@ student_data format:
 }
 """
 
+from UI.app import create_app
 from CoreAlg.matching import best_tutor, match
 from data_utilities import load_excel, shelve_data, load_shelve, next_id
 from iformat import iprint
@@ -87,4 +88,9 @@ shelve_data(tutor_data, "Data/tutor_data.shelve")           # Save the updated t
 
 iprint(tutor_data)                                          # Print the tutor data to verify that it was loaded and shelved correctly
 
-# TODO: Call `match` function, get the returned number (the tutor ID), find that ID in the tutor_data dictionary, and print the tutor's ID.
+student_data = None
+
+app = create_app(tutor_data=tutor_data, student_data=student_data)
+
+if __name__ == "__main__":
+    app.run(debug=True)
