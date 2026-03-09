@@ -14,5 +14,11 @@ def new_student():
 def view_matches():
     return render_template("matches.html")
 
+@app.route("/submit-student", methods=["POST"])
+def submit_student():
+    # Handle form submission and save student data
+    # For now, just redirect back to the index page
+    return render_template("index.html")
+
 if __name__ == "__main__":
     app.run(debug=True)
