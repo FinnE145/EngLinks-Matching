@@ -9,21 +9,22 @@
         <input type="text" class="form-control" id="name" name="name" required>
     </div>
     <div class="mb-3">
-        <label for="courses" class="form-label">Courses (ex. '101, 132, 174')</label>
+        <label for="courses" class="form-label">Courses (ex. 'APSC 174, CHEE 209, ELEC 271')</label>
         <input type="text" class="form-control" id="courses" name="courses" required
-            pattern="^\s*(?:[Aa][Pp][Ss][Cc])?\s*\d{3}(?:\s*,\s*(?:[Aa][Pp][Ss][Cc])?\s*\d{3})*\s*$"
-            title="Enter a comma-separated list of 3-digit course numbers.">
+            pattern="^([A-Za-z]{4} \d{3})(, [A-Za-z]{4} \d{3})*$"
+            title="Enter a comma-separated list of 3-digit course numbers."
+            value="{{ courses|join(', ') if courses else '' }}">
     </div>
     <div class="mb-3">
         <label for="availability" class="form-label">Availability (ctrl+click to select multiple)</label>
         <select class="form-select" id="availability" name="availability" multiple required>
-            <option value="Monday">Monday</option>
-            <option value="Tuesday">Tuesday</option>
-            <option value="Wednesday">Wednesday</option>
-            <option value="Thursday">Thursday</option>
-            <option value="Friday">Friday</option>
-            <option value="Saturday">Saturday</option>
-            <option value="Sunday">Sunday</option>
+            <option value="0" {% if 0 in availability %}selected{% endif %}>Monday</option>
+            <option value="1" {% if 1 in availability %}selected{% endif %}>Tuesday</option>
+            <option value="2" {% if 2 in availability %}selected{% endif %}>Wednesday</option>
+            <option value="3" {% if 3 in availability %}selected{% endif %}>Thursday</option>
+            <option value="4" {% if 4 in availability %}selected{% endif %}>Friday</option>
+            <option value="5" {% if 5 in availability %}selected{% endif %}>Saturday</option>
+            <option value="6" {% if 6 in availability %}selected{% endif %}>Sunday</option>
         </select>
     </div>
     <button type="submit" class="btn btn-purple">Submit</button>
