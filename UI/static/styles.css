@@ -1,0 +1,248 @@
+.bg-purple {
+    background-color: #990099;
+}
+
+.bg-purple-faded {
+    background-color: #f7ebf7;
+}
+
+.bg-purple-dark {
+    background-color: #660066;
+}
+
+/* Purple button classes */
+.btn-purple {
+    color: #fff;
+    background-color: #990099;
+    border-color: #990099;
+}
+
+.btn-purple:hover {
+    color: #fff;
+    background-color: #7a007a;
+    border-color: #6e006e;
+}
+
+.btn-purple:focus,
+.btn-purple:active {
+    color: #fff;
+    background-color: #7a007a;
+    border-color: #6e006e;
+    box-shadow: 0 0 0 0.25rem rgba(153, 0, 153, 0.5);
+}
+
+.btn-purple:disabled {
+    color: #fff;
+    background-color: #990099;
+    border-color: #990099;
+    opacity: 0.65;
+}
+
+.btn-outline-purple {
+    color: #990099;
+    border-color: #990099;
+}
+
+.btn-outline-purple:hover {
+    color: #fff;
+    background-color: #990099;
+    border-color: #990099;
+}
+
+.btn-outline-purple:focus,
+.btn-outline-purple:active {
+    color: #fff;
+    background-color: #990099;
+    border-color: #990099;
+    box-shadow: 0 0 0 0.25rem rgba(153, 0, 153, 0.5);
+}
+
+.btn-outline-purple:disabled {
+    color: #990099;
+    background-color: transparent;
+    opacity: 0.65;
+}
+
+/* Purple text and border */
+.text-purple {
+    color: #990099 !important;
+}
+
+.border-purple {
+    border-color: #990099 !important;
+}
+
+/* Purple badge */
+.badge-purple {
+    color: #fff;
+    background-color: #990099;
+}
+
+/* Purple alert */
+.alert-purple {
+    color: #520052;
+    background-color: #f7ebf7;
+    border-color: #ecd4ec;
+}
+
+.alert-purple .alert-link {
+    color: #420042;
+}
+
+/* Purple-faded button classes */
+.btn-purple-faded {
+    color: #990099;
+    background-color: #f7ebf7;
+    border-color: #ecd4ec;
+}
+
+.btn-purple-faded:hover {
+    color: #990099;
+    background-color: #ecd4ec;
+    border-color: #ddb8dd;
+}
+
+.btn-purple-faded:focus,
+.btn-purple-faded:active {
+    color: #990099;
+    background-color: #ecd4ec;
+    border-color: #ddb8dd;
+    box-shadow: 0 0 0 0.25rem rgba(153, 0, 153, 0.2);
+}
+
+.btn-purple-faded:disabled {
+    color: #990099;
+    background-color: #f7ebf7;
+    border-color: #ecd4ec;
+    opacity: 0.65;
+}
+
+.btn-outline-purple-faded {
+    color: #990099;
+    border-color: #ecd4ec;
+}
+
+.btn-outline-purple-faded:hover {
+    color: #990099;
+    background-color: #f7ebf7;
+    border-color: #ecd4ec;
+}
+
+.btn-outline-purple-faded:focus,
+.btn-outline-purple-faded:active {
+    color: #990099;
+    background-color: #f7ebf7;
+    border-color: #ecd4ec;
+    box-shadow: 0 0 0 0.25rem rgba(153, 0, 153, 0.2);
+}
+
+.btn-outline-purple-faded:disabled {
+    color: #990099;
+    background-color: transparent;
+    opacity: 0.65;
+}
+
+/* Purple-faded text and border */
+.text-purple-faded {
+    color: #990099 !important;
+}
+
+.border-purple-faded {
+    border-color: #ecd4ec !important;
+}
+
+/* Purple-faded badge */
+.badge-purple-faded {
+    color: #990099;
+    background-color: #f7ebf7;
+}
+
+/* Purple-faded alert */
+.alert-purple-faded {
+    color: #520052;
+    background-color: #fdf9fd;
+    border-color: #f7ebf7;
+}
+
+.alert-purple-faded .alert-link {
+    color: #420042;
+}
+
+/* Purple-dark button classes */
+.btn-purple-dark {
+    color: #fff;
+    background-color: #660066;
+    border-color: #660066;
+}
+
+.btn-purple-dark:hover {
+    color: #fff;
+    background-color: #4d004d;
+    border-color: #400040;
+}
+
+.btn-purple-dark:focus,
+.btn-purple-dark:active {
+    color: #fff;
+    background-color: #4d004d;
+    border-color: #400040;
+    box-shadow: 0 0 0 0.25rem rgba(102, 0, 102, 0.5);
+}
+
+.btn-purple-dark:disabled {
+    color: #fff;
+    background-color: #660066;
+    border-color: #660066;
+    opacity: 0.65;
+}
+
+.btn-outline-purple-dark {
+    color: #660066;
+    border-color: #660066;
+}
+
+.btn-outline-purple-dark:hover {
+    color: #fff;
+    background-color: #660066;
+    border-color: #660066;
+}
+
+.btn-outline-purple-dark:focus,
+.btn-outline-purple-dark:active {
+    color: #fff;
+    background-color: #660066;
+    border-color: #660066;
+    box-shadow: 0 0 0 0.25rem rgba(102, 0, 102, 0.5);
+}
+
+.btn-outline-purple-dark:disabled {
+    color: #660066;
+    background-color: transparent;
+    opacity: 0.65;
+}
+
+/* Purple-dark text and border */
+.text-purple-dark {
+    color: #660066 !important;
+}
+
+.border-purple-dark {
+    border-color: #660066 !important;
+}
+
+/* Purple-dark badge */
+.badge-purple-dark {
+    color: #fff;
+    background-color: #660066;
+}
+
+/* Purple-dark alert */
+.alert-purple-dark {
+    color: #330033;
+    background-color: #e6d9e6;
+    border-color: #d4bfd4;
+}
+
+.alert-purple-dark .alert-link {
+    color: #1a001a;
+}
