@@ -86,7 +86,7 @@ if excel_data is not None:                                  # Check if the Excel
 
 shelve_data(tutor_data, "Data/tutor_data.shelve")           # Save the updated tutor data back to the shelve file
 
-iprint(tutor_data)                                          # Print the tutor data to verify that it was loaded and shelved correctly
+#iprint(tutor_data)                                          # Print the tutor data to verify that it was loaded and shelved correctly
 
 student_data = None
 
