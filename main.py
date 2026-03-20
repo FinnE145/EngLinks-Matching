@@ -48,6 +48,7 @@ student_data format:
 }
 """
 
+from UI.app import create_app
 from CoreAlg.matching import best_tutor, match
 from data_utilities import load_excel, shelve_data, load_shelve, next_id
 from iformat import iprint
@@ -85,13 +86,16 @@ if excel_data is not None:                                  # Check if the Excel
 
 shelve_data(tutor_data, "Data/tutor_data.shelve")           # Save the updated tutor data back to the shelve file
 
-iprint(tutor_data)                                          # Print the tutor data to verify that it was loaded and shelved correctly
+#iprint(tutor_data)                                          # Print the tutor data to verify that it was loaded and shelved correctly
 
-test_student_data = {
+student_data = {
     "name": "Test Student",
     "courses": ["APSC 293"],
     "availability": ["Monday", "Wednesday"]
 }
 
+if __name__ == "__main__":
+    app = create_app(tutor_data=tutor_data, student_data=student_data)
+    app.run(debug=True)
 matched_tutor_id = match(test_student_data, tutor_data)     # Test the matching algorithm with a sample student data dictionary
 iprint(f"Matched Tutor ID: {matched_tutor_id}, Matched Tutor Data: {tutor_data.get(matched_tutor_id)}")             # Print the ID of the matched tutor
