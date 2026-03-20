@@ -88,9 +88,12 @@ shelve_data(tutor_data, "Data/tutor_data.shelve")           # Save the updated t
 
 #iprint(tutor_data)                                          # Print the tutor data to verify that it was loaded and shelved correctly
 
-student_data = None
-
-app = create_app(tutor_data=tutor_data, student_data=student_data)
+student_data = {
+    "name": "Test Student",
+    "courses": ["APSC 293"],
+    "availability": ["Monday", "Wednesday"]
+}
 
 if __name__ == "__main__":
+    app = create_app(tutor_data=tutor_data, student_data=student_data)
     app.run(debug=True)
