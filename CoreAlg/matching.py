@@ -36,7 +36,7 @@ def best_tutor(student_data: dict, tutor1_id:int, tutor1: dict, tutor2_id: int, 
     if tutor2["students"] < tutor1["students"]:
         return tutor2_id
     
-    return None
+    return tutor1_id
 
 def match(student_data: dict, tutors: dict) -> str | None:
     """
