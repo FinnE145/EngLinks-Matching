@@ -87,4 +87,11 @@ shelve_data(tutor_data, "Data/tutor_data.shelve")           # Save the updated t
 
 iprint(tutor_data)                                          # Print the tutor data to verify that it was loaded and shelved correctly
 
-# TODO: Call `match` function, get the returned number (the tutor ID), find that ID in the tutor_data dictionary, and print the tutor's ID.
+test_student_data = {
+    "name": "Test Student",
+    "courses": ["APSC 293"],
+    "availability": ["Monday", "Wednesday"]
+}
+
+matched_tutor_id = match(test_student_data, tutor_data)     # Test the matching algorithm with a sample student data dictionary
+iprint(f"Matched Tutor ID: {matched_tutor_id}, Matched Tutor Data: {tutor_data.get(matched_tutor_id)}")             # Print the ID of the matched tutor

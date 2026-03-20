@@ -1,42 +1,40 @@
 from data_utilities import load_excel, shelve_data, load_shelve
 
-def best_tutor(student_data: dict, tutor1_id:int, tutor1: dict, tutor2_id: int, tutor2: dict) -> str | None:
+def best_tutor(student_data: dict, tutor_data: dict) -> str | None:
     """
     Break a tie between multiple tutors with a scoring algorithm
 
     Args:
         student_data: A dictionary containing the student's courses and availability.
-        tutors: A dictionary of tutors with their courses, availability, and current student count.
+        tutor_data: A dictionary of tutors with their courses, availability, and current student count.
 
     Returns:
         The ID of the best tutor, or ``None`` if no suitable tutor is found.
     """
-    score1 = 0
-    score2 = 0
+    # Store scores in the form {tutor_id1: score1, tutor_id2: score2, ...}
+    scores = {}
 
-    student_availability = student_data["availability"]
+    # Loop through all tutors and calculate their scores based on the number of students they currently have
+    for tutor_id, tutor_info in tutor_data.items():
+        scores[tutor_id] = tutor_info.get("students", 0)
 
-    for day in student_availability:
-        if day in tutor1["availability"]:
-            score1 += 1
-    
-    for day in student_availability:
-        if day in tutor2["availability"]:
-            score2 += 1
+    # Find the minimum score (lower number of students is good)
+    min_score = min(scores.values())
 
-    if score1 > score2:
-        return tutor1_id
+    # Make a list to store all students with the minimum score (in case of ties)
+    best_tutors = []
 
-    if score2 > score1:
-        return tutor2_id    
-    
-    if tutor1["students"] < tutor2["students"]:
-        return tutor1_id
-    
-    if tutor2["students"] < tutor1["students"]:
-        return tutor2_id
-    
-    return tutor1_id
+    # Loop through the scores and add tutors with the minimum score to the best_tutors list
+    for tutor_id, score in scores.items():
+        if score == min_score:
+            best_tutors.append(tutor_id)
+
+    # If there's only one best tutor, return their ID
+    if len(best_tutors) == 1:
+        return best_tutors[0]
+
+    # If there are multiple best tutors, return the first one
+    return best_tutors[0]
 
 def match(student_data: dict, tutors: dict) -> int | None:
     """
