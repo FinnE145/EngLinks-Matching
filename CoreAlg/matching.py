@@ -1,6 +1,6 @@
 from data_utilities import load_excel, shelve_data, load_shelve
-#Comment
-def best_tutor(student_data: dict, tutors: dict) -> int | None:
+
+def best_tutor(student_data: dict, tutor1_id:int, tutor1: dict, tutor2_id: int, tutor2: dict) -> str | None:
     """
     Break a tie between multiple tutors with a scoring algorithm
 
@@ -11,21 +11,32 @@ def best_tutor(student_data: dict, tutors: dict) -> int | None:
     Returns:
         The ID of the best tutor, or ``None`` if no suitable tutor is found.
     """
-    # Note: this function should use the ranking criteria to return the best tutor's ID (as a number)
+    score1 = 0
+    score2 = 0
+
+    student_availability = student_data["availability"]
+
+    for day in student_availability:
+        if day in tutor1["availability"]:
+            score1 += 1
     
-    best_id = None
-    best_score = float('inf')
+    for day in student_availability:
+        if day in tutor2["availability"]:
+            score2 += 1
+
+    if score1 > score2:
+        return tutor1_id
+
+    if score2 > score1:
+        return tutor2_id    
     
-    for tutor_id, tutor_info in tutors.items():
-        # Calculate a score for this tutor (lower is better)
-        # Primary criteria: fewer students (load balancing)
-        score = tutor_info.get("students", 0)
-        
-        if best_id is None or score < best_score:
-            best_id = tutor_id
-            best_score = score
+    if tutor1["students"] < tutor2["students"]:
+        return tutor1_id
     
-    return best_id
+    if tutor2["students"] < tutor1["students"]:
+        return tutor2_id
+    
+    return tutor1_id
 
 def match(student_data: dict, tutors: dict) -> int | None:
     """
