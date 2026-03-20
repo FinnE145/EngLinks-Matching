@@ -97,3 +97,5 @@ student_data = {
 if __name__ == "__main__":
     app = create_app(tutor_data=tutor_data, student_data=student_data)
     app.run(debug=True)
+matched_tutor_id = match(test_student_data, tutor_data)     # Test the matching algorithm with a sample student data dictionary
+iprint(f"Matched Tutor ID: {matched_tutor_id}, Matched Tutor Data: {tutor_data.get(matched_tutor_id)}")             # Print the ID of the matched tutor
