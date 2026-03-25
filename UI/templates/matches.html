@@ -3,5 +3,70 @@
 {% block page_title %}View Matches{% endblock %}
 
 {% block content %}
-Coming soon!
+{% if not student_data %}
+    <div class="alert alert-purple" role="alert">
+        No students have been submitted yet.
+    </div>
+{% else %}
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        {% for student_id, student in student_data.items() %}
+        {% set tutor = tutor_data.get(student.tutor) if student.tutor is not none else none %}
+        <div class="col">
+            <div class="card h-100 border-purple">
+                <div class="card-header bg-purple text-white">
+                    <h5 class="mb-0">{{ student.name }}</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <h6 class="text-purple">Courses</h6>
+                            <div class="d-flex flex-wrap gap-1 mb-3">
+                                {% for course in student.courses %}
+                                <span class="badge badge-purple-faded border border-purple-faded">{{ course }}</span>
+                                {% endfor %}
+                            </div>
+                            <h6 class="text-purple">Availability</h6>
+                            <div class="d-flex flex-wrap gap-1">
+                                {% for day in student.availability %}
+                                <span class="badge badge-purple-faded border border-purple-faded">{{ day }}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="col-6 border-start border-purple-faded ps-3">
+                            <h6 class="text-purple">Matched Tutor</h6>
+                            {% if tutor %}
+                                <p class="fw-semibold mb-2">{{ tutor.name }}</p>
+                                <h6 class="text-purple small">Shared Courses</h6>
+                                <div class="d-flex flex-wrap gap-1 mb-2">
+                                    {% for course in student.courses %}
+                                        {% if course in tutor.courses %}
+                                        <span class="badge badge-purple border border-purple">{{ course }}</span>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                                <h6 class="text-purple small">Shared Availability</h6>
+                                <div class="d-flex flex-wrap gap-1">
+                                    {% for day in student.availability %}
+                                        {% if day in tutor.availability %}
+                                        <span class="badge badge-purple border border-purple">{{ day }}</span>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                <div class="alert alert-purple-faded py-2 px-3 mb-0" role="alert">
+                                    No matching tutor found.
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+<div class="mt-4">
+    <a href="{{ url_for('new_student') }}" class="btn btn-purple">Add Student</a>
+</div>
 {% endblock %}
