@@ -18,13 +18,13 @@
     <div class="mb-3">
         <label for="availability" class="form-label">Availability (ctrl+click to select multiple)</label>
         <select class="form-select" id="availability" name="availability" multiple required>
-            <option value="0" {% if 0 in availability %}selected{% endif %}>Monday</option>
-            <option value="1" {% if 1 in availability %}selected{% endif %}>Tuesday</option>
-            <option value="2" {% if 2 in availability %}selected{% endif %}>Wednesday</option>
-            <option value="3" {% if 3 in availability %}selected{% endif %}>Thursday</option>
-            <option value="4" {% if 4 in availability %}selected{% endif %}>Friday</option>
-            <option value="5" {% if 5 in availability %}selected{% endif %}>Saturday</option>
-            <option value="6" {% if 6 in availability %}selected{% endif %}>Sunday</option>
+            <option value="Monday" {% if "Monday" in availability %}selected{% endif %}>Monday</option>
+            <option value="Tuesday" {% if "Tuesday" in availability %}selected{% endif %}>Tuesday</option>
+            <option value="Wednesday" {% if "Wednesday" in availability %}selected{% endif %}>Wednesday</option>
+            <option value="Thursday" {% if "Thursday" in availability %}selected{% endif %}>Thursday</option>
+            <option value="Friday" {% if "Friday" in availability %}selected{% endif %}>Friday</option>
+            <option value="Saturday" {% if "Saturday" in availability %}selected{% endif %}>Saturday</option>
+            <option value="Sunday" {% if "Sunday" in availability %}selected{% endif %}>Sunday</option>
         </select>
     </div>
     <button type="submit" class="btn btn-purple">Submit</button>

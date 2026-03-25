@@ -39,11 +39,10 @@ def create_app(tutor_data: dict | None = None, student_data: dict | None = None)
             err = True
 
         try:
-            availability = [int(i) for i in availability]
             if len(availability) < 1:
                 flash("Please select at least one availability slot.", "error")
                 err = True
-            if any(i < 0 or i > 6 for i in availability):
+            if not all(i in ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"] for i in availability):
                 raise ValueError
         except ValueError:
             flash("Invalid availability selection.", "error")
@@ -67,7 +66,8 @@ def create_app(tutor_data: dict | None = None, student_data: dict | None = None)
 
         student_data[student_id]["tutor"] = match(student_data[student_id], app.config["TUTOR_DATA"])
 
-        shelve_data(student_data, "Data/student_data.shelve")
+        shelve_data(app.config["TUTOR_DATA"], "Data/tutor_data.shelve")          # Update shelve data with any changes to tutor student counts
+        shelve_data(student_data, "Data/student_data.shelve")          # Save the new student data to shelve
         flash("Student submitted successfully.", "success")
         return redirect(url_for("view_matches"))
 
