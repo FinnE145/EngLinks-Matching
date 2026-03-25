@@ -5,7 +5,7 @@ from CoreAlg.matching import match
 
 def create_app(tutor_data: dict | None = None, student_data: dict | None = None) -> Flask:
     app = Flask(__name__)
-    app.config["SECRET_KEY"] = "dev"
+    app.config["SECRET_KEY"] = "kjsdfblkasjdfb"
     app.config["TUTOR_DATA"] = tutor_data if tutor_data is not None else (load_shelve("Data/tutor_data.shelve") or {})
     app.config["STUDENT_DATA"] = student_data if student_data is not None else (load_shelve("Data/student_data.shelve") or {})
 
@@ -19,7 +19,7 @@ def create_app(tutor_data: dict | None = None, student_data: dict | None = None)
 
     @app.route("/view-matches")
     def view_matches():
-        return render_template("matches.html")
+        return render_template("matches.html", student_data=app.config["STUDENT_DATA"], tutor_data=app.config["TUTOR_DATA"])
 
     @app.route("/submit-student", methods=["POST"])
     def submit_student():
