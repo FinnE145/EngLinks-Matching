@@ -91,9 +91,9 @@ shelve_data(tutor_data, "Data/tutor_data.shelve")           # Save the updated t
 student_data = {
     0: {
         "name": "Test Student",
-        "courses": ["APSC 293"],
+        "courses": ["MREN 178"],
         "availability": ["Monday", "Wednesday"],
-        "tutor": 4
+        "tutor": 1
     },
     1: {
         "name": "Test Student 2",

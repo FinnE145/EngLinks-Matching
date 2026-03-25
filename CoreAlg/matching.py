@@ -14,9 +14,13 @@ def best_tutor(student_data: dict, tutor_data: dict) -> str | None:
     # Store scores in the form {tutor_id1: score1, tutor_id2: score2, ...}
     scores = {}
 
-    # Loop through all tutors and calculate their scores based on the number of students they currently have
+    courses = set(student_data.get("courses", []))
+
+    # Loop through all tutors and calculate their scores based on the number of students they currently have and the number of matching courses
     for tutor_id, tutor_info in tutor_data.items():
-        scores[tutor_id] = tutor_info.get("students", 0)
+        scores[tutor_id] = 0
+        scores[tutor_id] -= len(courses & set(tutor_info.get("courses", [])))  # Matching courses reduce score (good)
+        scores[tutor_id] += tutor_info.get("students", 0)  # More students increase score (bad)
 
     # Find the minimum score (lower number of students is good)
     min_score = min(scores.values())
