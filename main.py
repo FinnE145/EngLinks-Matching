@@ -78,7 +78,7 @@ if excel_data is not None:                                  # Check if the Excel
                 students = 0                                            # ...if not, initialize the number of students to 0
 
             tutor_data[tutor_id] = {                                # Add the new/updated tutor data to the shelve data dictionary
-                "Name": tutor_name,
+                "name": tutor_name,
                 "courses": list(filter(lambda x: not pd.isna(x), courses)),
                 "availability": list(filter(lambda x: not pd.isna(x), availability)),
                 "students": students
@@ -89,13 +89,24 @@ shelve_data(tutor_data, "Data/tutor_data.shelve")           # Save the updated t
 #iprint(tutor_data)                                          # Print the tutor data to verify that it was loaded and shelved correctly
 
 student_data = {
-    "name": "Test Student",
-    "courses": ["APSC 293"],
-    "availability": ["Monday", "Wednesday"]
+    0: {
+        "name": "Test Student",
+        "courses": ["APSC 293"],
+        "availability": ["Monday", "Wednesday"],
+        "tutor": 4
+    },
+    1: {
+        "name": "Test Student 2",
+        "courses": ["APSC 293", "APSC 174"],
+        "availability": ["Tuesday", "Thursday"],
+        "tutor": None
+    }
 }
+
+matched_tutor_id = match(student_data[1], tutor_data)     # Test the matching algorithm with a sample student data dictionary
+student_data[1]["tutor"] = matched_tutor_id                     # Update the sample student data with the matched tutor ID
+iprint(f"Matched Tutor ID: {matched_tutor_id}, Matched Tutor Data: {tutor_data.get(matched_tutor_id)}")             # Print the ID of the matched tutor
 
 if __name__ == "__main__":
     app = create_app(tutor_data=tutor_data, student_data=student_data)
     app.run(debug=True)
-matched_tutor_id = match(test_student_data, tutor_data)     # Test the matching algorithm with a sample student data dictionary
-iprint(f"Matched Tutor ID: {matched_tutor_id}, Matched Tutor Data: {tutor_data.get(matched_tutor_id)}")             # Print the ID of the matched tutor
