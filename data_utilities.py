@@ -32,7 +32,7 @@ def shelve_data(data: dict, filename: str) -> None:
     try:
         with shelve.open(filename) as db:               # Open/create the desired shelve file, creating the `db` variable to edit the saved dictionary
             for id, value in data.items():              # Iterate through the data dictionary...
-                db[id] = value                          # ...and save each key-value pair to the shelved dictionary
+                db[str(id)] = value                          # ...and save each key-value pair to the shelved dictionary
         print(f"Data successfully saved to {filename}")
     except Exception as e:                              # Catch any issues and show an error message
         print(f"Error saving data to shelve: {e}")
@@ -49,7 +49,7 @@ def load_shelve(filename: str) -> dict | None:
     try:
         with shelve.open(filename) as db:           # Open the shelve file and create the `db` variable to access the saved dictionary
             data = {i: db[i] for i in db.keys()}    # Create a new dictionary by iterating through the shelved key-value pairs (copies the shelved data, rather than referencing it)
-        return data
+        return {int(i) if i.isdigit() else i: value for i, value in data.items()}
     except Exception as e:                          # Catch any issues and show an error message
         print(f"Error loading data from shelve: {e}")
         return None

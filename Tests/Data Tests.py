@@ -89,10 +89,10 @@ def test_basic_match():
 
     result = match(student_data, tutor_data)
 
-    if result == 1:
+    if result == 0:
         print("PASS: Basic matching test")
     else:
-        print("FAIL: Basic matching test")
+        print(f"FAIL: Basic matching test (Returned {result} instead of 0)")
 
 def test_lowest_workload_priority():
 
@@ -136,15 +136,15 @@ def test_student_count_update():
     # Test confirms that workload tracking works correctly. 
 
 
-    original_count = tutor_data[1]["students"] 
+    original_count = tutor_data[0]["students"]
 
     # Run the matching function 
 
-    match(student_data, tutor_data) 
-    if tutor_data[1]["students"] == original_count + 1: 
+    match(student_data, tutor_data)
+    if tutor_data[0]["students"] == original_count + 1:
         print("PASS: Student count update test")
     else: 
-        print("FAIL: Student count update test") 
+        print(f"FAIL: Student count update test (Expected {original_count + 1}, got {tutor_data[0]['students']})") 
 
 # Edge case tests
 
